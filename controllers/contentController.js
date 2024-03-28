@@ -51,7 +51,8 @@ const getContent = async (req, res) => {
     const contents = await contentSchema
       .find()
       .limit(perPage)
-      .skip(perPage * (page - 1));
+      .skip(perPage * (page - 1))
+      .sort({createdAt : -1})
     if (!contents) {
       return res.status(200).json({
         success: false,
